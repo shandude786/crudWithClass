@@ -11,36 +11,33 @@ class Main extends Component {
       { id: 3, name: "Manish", username: "manish123" },
     ],
     currentUser: { id: null, name: "", username: "" },
-    editing: true,
+    editing: false,
   };
   addUser = (user) => {
     user.id = this.state.users.length + 1;
-    console.log(user.id);
     this.setState({
       users: [...this.state.users, user],
     });
-    console.log(this.state.users);
   };
   updateUser = (id, updatedUser) => {
-    this.setState({
-      users: [
-        this.state.users.map((user) => (user.id === id ? updatedUser : user)),
-        (this.state.editing: false),
-      ],
-    });
+    let newUser = this.state.users.map((user) =>
+      user.id === id ? updatedUser : user
+    );
+    this.setState({ users: newUser, editing: false });
   };
   deleteUser = (id) => {
-    console.log(id);
     let newUser = this.state.users.filter((user) => user.id !== id);
     this.setState({
       users: newUser,
       editing: false,
     });
   };
-  editRow=(user)=>{
-     currentUser:{ id: user.id, name: user.name, username: user.username },
-     editing: true,
-  }
+  editRow = (user) => {
+    this.setState({
+      currentUser: { id: user.id, name: user.name, username: user.username },
+      editing: true,
+    });
+  };
   render() {
     return (
       <React.Fragment>
@@ -64,7 +61,11 @@ class Main extends Component {
         </div>
         <div>
           <h2>View Users</h2>
-          <UserTable users={this.state.users} deleteUser={this.deleteUser} editRow={this.editRow} />
+          <UserTable
+            users={this.state.users}
+            deleteUser={this.deleteUser}
+            editRow={this.editRow}
+          />
         </div>
       </React.Fragment>
     );
