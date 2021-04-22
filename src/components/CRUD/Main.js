@@ -11,7 +11,7 @@ class Main extends Component {
       { id: 3, name: "Manish", username: "manish123" },
     ],
     currentUser: { id: null, name: "", username: "" },
-    editing: false,
+    editing: true,
   };
   addUser = (user) => {
     user.id = this.state.users.length + 1;
@@ -31,11 +31,16 @@ class Main extends Component {
   };
   deleteUser = (id) => {
     console.log(id);
-    // this.state.users.filter((user) => user.id !== id)
+    let newUser = this.state.users.filter((user) => user.id !== id);
     this.setState({
-      users: [],
+      users: newUser,
+      editing: false,
     });
   };
+  editRow=(user)=>{
+     currentUser:{ id: user.id, name: user.name, username: user.username },
+     editing: true,
+  }
   render() {
     return (
       <React.Fragment>
@@ -59,7 +64,7 @@ class Main extends Component {
         </div>
         <div>
           <h2>View Users</h2>
-          <UserTable users={this.state.users} deleteUser={this.deleteUser} />
+          <UserTable users={this.state.users} deleteUser={this.deleteUser} editRow={this.editRow} />
         </div>
       </React.Fragment>
     );

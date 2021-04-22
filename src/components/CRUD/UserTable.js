@@ -22,7 +22,7 @@ class UserTable extends Component {
                     <td>{user.name}</td>
                     <td>{user.username}</td>
                     <td>
-                      <button>Edit</button>
+                      <button onClick={()=>this.props.editRow(user)}>Edit</button>
                     </td>
                     <td>
                       <button onClick={() => this.props.deleteUser(user.id)}>
