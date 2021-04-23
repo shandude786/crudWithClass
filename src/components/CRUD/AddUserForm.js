@@ -14,11 +14,13 @@ class AddUserForm extends Component {
       user: { ...this.state.user, [e.target.name]: e.target.value },
     });
   };
+
   handleSubmit = (e) => {
     e.preventDefault();
     if (!this.state.user.name || !this.state.user.username) return;
     this.props.addUser(this.state.user);
   };
+
   render() {
     return (
       <form onSubmit={this.handleSubmit}>

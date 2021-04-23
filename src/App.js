@@ -1,8 +1,8 @@
 import "./App.css";
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
-import Navbar from "./components/Navbar/Navbar";
+// import Navbar from "./components/Navbar/Navbar";
 import Main from "./components/CRUD/Main";
-import Form from "./components/CRUD/Form";
+// import Form from "./components/CRUD/Form";
 
 function App() {
   return (

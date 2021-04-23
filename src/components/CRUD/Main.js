@@ -13,18 +13,37 @@ class Main extends Component {
     currentUser: { id: null, name: "", username: "" },
     editing: false,
   };
+
   addUser = (user) => {
     user.id = this.state.users.length + 1;
     this.setState({
       users: [...this.state.users, user],
     });
   };
+
   updateUser = (id, updatedUser) => {
-    let newUser = this.state.users.map((user) =>
+    let newArray = this.state.users.map((user) =>
       user.id === id ? updatedUser : user
     );
-    this.setState({ users: newUser, editing: false });
+    // let newArray = this.props.users.map((user) => {
+    //   if (user.id === id) {
+    //     user=updatedUser;
+    //   } else {
+    //     user=user;
+    //   }
+    // });
+    
+    // console.log(updatedUser.name);
+    // const index = this.state.users.findIndex((x) => x.id === id);
+    // console.log(index);
+    // const newArray = this.state.users;
+    // newArray[index].id = id;
+    // newArray[index].name = updatedUser.name;
+    // newArray[index].username = updatedUser.username;
+
+    this.setState({ users: newArray, editing: false });
   };
+
   deleteUser = (id) => {
     let newUser = this.state.users.filter((user) => user.id !== id);
     this.setState({
@@ -32,12 +51,14 @@ class Main extends Component {
       editing: false,
     });
   };
+
   editRow = (user) => {
     this.setState({
       currentUser: { id: user.id, name: user.name, username: user.username },
       editing: true,
     });
   };
+
   render() {
     return (
       <React.Fragment>
