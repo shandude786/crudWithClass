@@ -17,7 +17,7 @@ class EditUserForm extends Component {
   }
   handleSubmit = (e) => {
     e.preventDefault();
-    this.props.updateUser(this.state.id, this.state.user);
+    this.props.updateUser(this.state.user.id, this.state.user);
   };
   render() {
     return (

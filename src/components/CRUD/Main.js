@@ -24,23 +24,7 @@ class Main extends Component {
   updateUser = (id, updatedUser) => {
     let newArray = this.state.users.map((user) =>
       user.id === id ? updatedUser : user
-    );
-    // let newArray = this.props.users.map((user) => {
-    //   if (user.id === id) {
-    //     user=updatedUser;
-    //   } else {
-    //     user=user;
-    //   }
-    // });
-    
-    // console.log(updatedUser.name);
-    // const index = this.state.users.findIndex((x) => x.id === id);
-    // console.log(index);
-    // const newArray = this.state.users;
-    // newArray[index].id = id;
-    // newArray[index].name = updatedUser.name;
-    // newArray[index].username = updatedUser.username;
-
+    );  
     this.setState({ users: newArray, editing: false });
   };
 
